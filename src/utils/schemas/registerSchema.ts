@@ -1,17 +1,22 @@
 import type { RegisterFormValues } from "../../types/RegisterFormValues";
 import * as Yup from "yup";
+
 export const registerInitialValues: RegisterFormValues = {
 	firstName: "",
 	lastName: "",
 	nickName: "",
 	email: "",
-	region: [],
+	region: "",
 };
 
 export const registerSchema = Yup.object({
-	firstName: Yup.string().min(6, "Min. 6 char").required("First name is required"),
-	lastName: Yup.string().min(6, "Min. 6 char").required("Last name is required"),
-	nickName: Yup.string().optional(),
-	email: Yup.string().email("Incorrect email").required("Required"),
-	region: Yup.string().min(6, "Min. 6 char").required("Required"),
+	firstName: Yup.string().optional(),
+
+	lastName: Yup.string().optional(),
+
+	nickName: Yup.string().min(4, "Min. 4 znaky").required("Uživatelské jméno je povinné"),
+
+	email: Yup.string().email("Špatný formát emailu").required("Email je povinný"),
+
+	region: Yup.string().oneOf(["Praha", "Brno", "Ostrava"], "Vyberte platný kraj").optional(),
 });

@@ -9,4 +9,5 @@ export type RegisterFormField = {
 	grid: {
 		xs: number;
 	};
+	menuItem?: string[];
 };

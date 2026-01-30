@@ -5,7 +5,7 @@ type Props = TextFieldProps & {
 	name: string;
 };
 
-export const FormikTextField = ({ name, ...props }: Props) => {
+export const FormTextField = ({ name, ...props }: Props) => {
 	const [field, meta] = useField(name);
 
 	return (
@@ -13,6 +13,11 @@ export const FormikTextField = ({ name, ...props }: Props) => {
 			{...field}
 			{...props}
 			fullWidth
+			slotProps={{
+				inputLabel: {
+					shrink: true,
+				},
+			}}
 			error={meta.touched && Boolean(meta.error)}
 			helperText={meta.touched && meta.error}
 		/>
